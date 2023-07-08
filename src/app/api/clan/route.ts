@@ -72,7 +72,7 @@ export async function GET(request: Request) {
       owner,
       admins: stringToList(adminsString),
       moderators: stringToList(moderatorsString),
-      membersString: stringToList(membersString),
+      members: stringToList(membersString),
       max_members: Number(rawLimit),
     },
     {
