@@ -3,6 +3,16 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+function compareUpdatedAt(a: any, b: any) {
+  if (a.updatedAt > b.updatedAt) {
+    return -1; // a should come before b
+  } else if (a.updatedAt < b.updatedAt) {
+    return 1; // a should come after b
+  } else {
+    return 0; // a and b are equal in terms of updatedAt
+  }
+}
+
 export async function GET(request: Request) {
   const authorizationHeader = request.headers.get("Authorization");
   if (authorizationHeader !== process.env.API_SECRET) {
@@ -40,7 +50,7 @@ export async function GET(request: Request) {
     );
   }
 
-  BigInt.prototype.toJSON = function () {
+  BigInt.prototype.toJSON = function() {
     return this.toString();
   };
 
@@ -117,6 +127,12 @@ export async function GET(request: Request) {
     });
     return NextResponse.json(newPlayer);
   }
+
+  player.bedwars_stats.sort((a, b) => {
+    const dateA = new Date(a.updated_at).getTime();
+    const dateB = new Date(b.updated_at).getTime();
+    return dateB - dateA;
+  });
 
   return NextResponse.json(player);
 }
