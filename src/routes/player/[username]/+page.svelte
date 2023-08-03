@@ -25,7 +25,7 @@
 		</div>
 		<div class="w-full gap-4 grid grid-cols-10">
 			<div class="col-span-full lg:col-span-2 flex justify-center">
-				<SkinViewer skinUrl={data.player.skin_url} />
+				<SkinViewer skinUrl={data.player.skin_url.replace("http", "https")} />
 			</div>
 			<div
 				class="col-span-full lg:col-span-8 bg-stone-800 border border-stone-50/10 rounded-lg w-full"
