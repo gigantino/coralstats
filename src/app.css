@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Minecraft';
+	src: url('/fonts/minecraft.woff2') format('woff2');
+}
+
+@layer base {
+	html,
+	body {
+		@apply bg-stone-900 text-white;
+	}
+}
