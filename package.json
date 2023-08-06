@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@builder.io/partytown": "^0.8.0",
 		"chart.js": "^4.3.0",
 		"skinview3d": "3.0.0-alpha.1"
 	}

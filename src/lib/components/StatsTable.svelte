@@ -121,11 +121,14 @@
 		</div>
 		<div class="flex flex-col border rounded-lg p-2 border-stone-50/10 text-center">
 			<span class="font-bold">Winstreak</span>
-			<span>{player.bedwarsStats[0].winstreak}</span>
+			<span>{player.bedwarsStats[player.bedwarsStats.length - 1].winstreak}</span>
 		</div>
 		<div class="flex flex-col border rounded-lg p-2 border-stone-50/10 text-center">
 			<span class="font-bold">{selectedCategory == 'totali' ? 'Top Winstreak' : 'Stelle'}</span>
-			<span>{selectedCategory == 'totali' ? player.bedwarsStats[0].highest_winstreak : levels}</span
+			<span
+				>{selectedCategory == 'totali'
+					? player.bedwarsStats[player.bedwarsStats.length - 1].highest_winstreak
+					: levels}</span
 			>
 		</div>
 	</div>

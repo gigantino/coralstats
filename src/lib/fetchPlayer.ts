@@ -129,9 +129,11 @@ export default async function fetchPlayer(username: string): Promise<PlayerRespo
 	const chronologicalBedwarsStats = player.bedwarsStats.reverse();
 	chronologicalBedwarsStats.forEach((day, i) => {
 		bedwarsStatsHistory.levels.push(day.level);
-		bedwarsStatsHistory.kills.push(day.kills);
-		bedwarsStatsHistory.deaths.push(day.deaths);
-		bedwarsStatsHistory.kdr.push(calculateRatio(day.kills, day.deaths));
+		bedwarsStatsHistory.kills.push(day.kills + day.final_kills);
+		bedwarsStatsHistory.deaths.push(day.deaths + day.final_deaths);
+		bedwarsStatsHistory.kdr.push(
+			calculateRatio(day.kills + day.final_kills, day.deaths + day.final_deaths)
+		);
 		bedwarsStatsHistory.final_kills.push(day.final_kills);
 		bedwarsStatsHistory.final_deaths.push(day.final_deaths);
 		bedwarsStatsHistory.fkdr.push(calculateRatio(day.final_kills, day.final_deaths));
@@ -142,8 +144,8 @@ export default async function fetchPlayer(username: string): Promise<PlayerRespo
 		bedwarsStatsHistory.winstreak.push(day.winstreak);
 		bedwarsStatsHistory.dates.push(day.created);
 		if (i > 0) {
-			const dailyKills = day.kills - bedwarsStatsHistory.kills[i - 1];
-			const dailyDeaths = day.deaths - bedwarsStatsHistory.deaths[i - 1];
+			const dailyKills = day.kills + day.final_kills - bedwarsStatsHistory.kills[i - 1];
+			const dailyDeaths = day.deaths + day.final_deaths - bedwarsStatsHistory.deaths[i - 1];
 			const dailyFinalKills = day.final_kills - bedwarsStatsHistory.final_kills[i - 1];
 			const dailyFinalDeaths = day.final_deaths - bedwarsStatsHistory.final_deaths[i - 1];
 			const dailyWins = day.wins - bedwarsStatsHistory.wins[i - 1];

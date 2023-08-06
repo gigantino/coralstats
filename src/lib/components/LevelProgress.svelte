@@ -8,7 +8,7 @@
 		let lastNumberExperience: number;
 		switch (Number(converted[converted.length - 1])) {
 			case 0:
-				lastNumberExperience = 500;
+				lastNumberExperience = 1000;
 				break;
 			case 1:
 				lastNumberExperience = 1000;
@@ -34,7 +34,7 @@
 		}
 
 		const percentage = (currentValue / maxValue) * 100;
-		return Math.min(100, Math.max(0, Math.floor(percentage))); // Ensure the percentage is between 0 and 100
+		return Math.min(100, Math.max(0, Math.floor(percentage)));
 	}
 
 	$: latestBedwarsStats = player.bedwarsStats[player.bedwarsStats.length - 1];

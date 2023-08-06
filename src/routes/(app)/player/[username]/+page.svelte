@@ -7,15 +7,43 @@
 	import MainInfo from '$lib/components/MainInfo.svelte';
 	import StarProgression from '$lib/components/StarProgression.svelte';
 	import GamesGraph from '$lib/components/GamesGraph.svelte';
+	import WinstreakGraph from '$lib/components/WinstreakGraph.svelte';
 	export let data: PageData;
 </script>
 
 <svelte:head>
-	<title>{data.errored ? 'Errore' : `${data.player.display_name} • CoralStats`}</title>
+	<title
+		>{data.errored
+			? 'Giocatore non trovato • CoralStats'
+			: `${data.player.display_name} • CoralStats`}</title
+	>
+	<meta
+		name="og:title"
+		content={data.errored
+			? 'Giocatore non trovato • CoralStats'
+			: `${data.player.display_name} • CoralStats`}
+	/>
+	<meta
+		name="og:description"
+		content={data.errored
+			? 'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.'
+			: `Visualizza le statistiche di ${data.player.display_name} su CoralMC.`}
+	/>
 </svelte:head>
 
 {#if data.errored}
-	<h1>Errored {data.status}</h1>
+	<div class="w-full font-minecraft flex items-center flex-col justify-center gap-2">
+		<h1 class="text-6xl text-minecraft-yellow">{data.status}!</h1>
+		<p>
+			{`${
+				data.status == 404
+					? 'Giocatore non trovato'
+					: data.status == 400
+					? 'Username invalido'
+					: "C'e' stato un errore!"
+			}`}
+		</p>
+	</div>
 {:else}
 	<div class="flex flex-col gap-4">
 		<div
@@ -25,7 +53,7 @@
 		</div>
 		<div class="w-full gap-4 grid grid-cols-10">
 			<div class="col-span-full lg:col-span-2 flex justify-center">
-				<SkinViewer skinUrl={data.player.skin_url.replace("http", "https")} />
+				<SkinViewer skinUrl={data.player.skin_url.replace('http', 'https')} />
 			</div>
 			<div
 				class="col-span-full lg:col-span-8 bg-stone-800 border border-stone-50/10 rounded-lg w-full"
@@ -58,6 +86,14 @@
 			>
 				<h2 class="font-bold m-auto">Partite giocate</h2>
 				<GamesGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
+			</div>
+		</div>
+		<div class="w-full grid grid-cols-2 gap-4">
+			<div
+				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
+			>
+				<h2 class="font-bold m-auto">Winstreak</h2>
+				<WinstreakGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 	</div>

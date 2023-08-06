@@ -1,69 +1,16 @@
-<script lang="ts">
-	import searchIcon from '$lib/assets/search.svg';
+<script>
 	import '../app.css';
-
-	let username = '';
-	let searchInput: HTMLInputElement | undefined;
-	const onKeyDown = (event: KeyboardEvent) => {
-		if ((event.ctrlKey || event.metaKey) && (event.key === 'k' || event.key === 'K')) {
-			event.preventDefault();
-			searchInput?.focus();
-		}
-	};
-
-	function handleInput(event: Event) {
-		const target = event.target as HTMLInputElement;
-		username = target.value.replace(/\s/g, '');
-	}
+	import { partytownSnippet } from '@builder.io/partytown/integration';
 </script>
 
-<main class="w-full">
-	<div class="w-full bg-yellow-500 text-black px-2">
-		<div class="w-full max-w-screen-lg m-auto py-1 font-bold flex justify-center text-center">
-			<p>
-				CoralStats è in alpha. Entra nel <a
-					href="https://discord.gg/afE7trvbYj"
-					target="_blank"
-					class="underline">Discord</a
-				> per segnalare bug e ricevere aggiornamenti.
-			</p>
-		</div>
-	</div>
-	<nav class="w-full px-4 min-h-16 border-b flex items-center border-stone-50/10 bg-stone-900">
-		<div class="flex justify-between py-2 gap-2 w-full max-w-screen-lg m-auto items-center">
-			<a href="/" class="flex-shrink-0">
-				<img
-					src="/logo.webp"
-					alt="coralstats logo"
-					class="w-10 h-10 rounded-full drop-shadow-sm flex-shrink-0"
-				/>
-			</a>
-			<form action={`/player/${username.toLowerCase()}`} autocomplete="off" class="w-full md:w-fit">
-				<label class="relative">
-					<input
-						on:focus={(e) => e.currentTarget.select()}
-						placeholder="Cerca giocatore"
-						type="text"
-						bind:this={searchInput}
-						bind:value={username}
-						on:input={handleInput}
-						class="w-full border border-stone-50/10 bg-stone-800 rounded-lg h-9 px-8 focus:outline-none focus:ring ring-stone-50/10"
-					/>
-					<img src={searchIcon} alt="search" class="absolute top-0 left-2" />
-					<div
-						class="top-0 right-2 border-stone-50/10 border rounded-lg bg-stone-900 w-fit text-sm px-1 absolute"
-					>
-						Ctrl K
-					</div>
-				</label>
-			</form>
-		</div>
-	</nav>
+<svelte:head>
+	<script>
+		partytown = {
+			forward: ['dataLayer.push']
+		};
+	</script>
 
-	<div class="w-full p-4">
-		<div class="m-auto w-full max-w-screen-lg">
-			<slot />
-		</div>
-	</div>
-</main>
-<svelte:window on:keydown={onKeyDown} />
+	{@html '<script>' + partytownSnippet() + '</script>'}
+</svelte:head>
+
+<slot />

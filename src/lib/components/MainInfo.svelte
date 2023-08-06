@@ -93,6 +93,16 @@
 				return 'aqua';
 			case 'STREAMER':
 				return 'dark-purple';
+			case 'HELPER':
+				return 'dark-green';
+			case 'DEV':
+				return 'aqua';
+			case 'MOD':
+				return 'dark-aqua';
+			case 'SRMOD':
+				return 'dark-blue';
+			case 'MOD+':
+				return 'dark-aqua';
 			default:
 				return 'white';
 		}

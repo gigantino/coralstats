@@ -28,39 +28,38 @@
 					datasets: [
 						{
 							label: 'Uccisioni',
-							backgroundColor: '#FEE75C',
-							borderColor: '#FEE75C',
+							backgroundColor: '#55FF55',
+							borderColor: '#55FF55',
 							data: kills
 						},
 						{
 							label: 'Morti',
-							backgroundColor: '#FEE75C',
-							borderColor: '#FEE75C',
-							hidden: true,
+							backgroundColor: '#FF5555',
+							borderColor: '#FF5555',
 							data: deaths
 						},
 						{
 							label: 'Uccisioni finali',
-							backgroundColor: '#75C',
-							borderColor: '#75C',
+							backgroundColor: '#FFAA00',
+							borderColor: '#FFAA00',
 							data: finalKills
 						},
 						{
 							label: 'Morti finali',
-							backgroundColor: '#22E79C',
-							borderColor: '#22E79C',
+							backgroundColor: '#FFFF55',
+							borderColor: '#FFFF55',
 							data: finalDeaths
 						},
 						{
 							label: 'Vittorie',
-							backgroundColor: '#99A',
-							borderColor: '#99A',
+							backgroundColor: '#AA00AA',
+							borderColor: '#AA00AA',
 							data: wins
 						},
 						{
 							label: 'Sconfitte',
-							backgroundColor: '#22E79C',
-							borderColor: '#22E79C',
+							backgroundColor: '#5555FF',
+							borderColor: '#5555FF',
 							hidden: true,
 							data: losses
 						}
