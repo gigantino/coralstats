@@ -1,22 +1,26 @@
 <script lang="ts">
-	import StatsTable from '$lib/components/StatsTable.svelte';
-	import SkinViewer from '$lib/components/SkinViewer.svelte';
-	import OverallProgressionGraph from '$lib/components/OverallProgressionGraph.svelte';
+	import StatsTable from '$lib/components/bedwars/StatsTable.svelte';
+	import SkinViewer from '$lib/components/shared/SkinViewer.svelte';
 	import type { PageData } from './$types';
-	import LevelProgress from '$lib/components/LevelProgress.svelte';
-	import MainInfo from '$lib/components/MainInfo.svelte';
-	import StarProgression from '$lib/components/StarProgression.svelte';
-	import GamesGraph from '$lib/components/GamesGraph.svelte';
-	import WinstreakGraph from '$lib/components/WinstreakGraph.svelte';
+	import StarProgression from '$lib/components/bedwars/StarProgression.svelte';
+	// Graphs
+	import OverallProgression from '$lib/components/bedwars/graphs/OverallProgression.svelte';
+	import GamesGraph from '$lib/components/bedwars/graphs/GamesGraph.svelte';
+	import WinstreakGraph from '$lib/components/bedwars/graphs/WinstreakGraph.svelte';
+	import LevelGraph from '$lib/components/bedwars/graphs/LevelGraph.svelte';
+
+	import downloadIcon from '$lib/assets/download.svg';
+	import Nametag from '$lib/components/bedwars/Nametag.svelte';
+
 	export let data: PageData;
 </script>
 
 <svelte:head>
-	<title
-		>{data.errored
+	<title>
+		{data.errored
 			? 'Giocatore non trovato • CoralStats'
-			: `${data.player.display_name} • CoralStats`}</title
-	>
+			: `${data.player.display_name} • CoralStats`}
+	</title>
 	<meta
 		name="og:title"
 		content={data.errored
@@ -49,11 +53,19 @@
 		<div
 			class="font-minecraft text-xl bg-stone-800 rounded-lg border w-fit m-auto border-stone-50/10 p-3 text-center"
 		>
-			<MainInfo player={data.player} />
+			<Nametag player={data.player} />
 		</div>
 		<div class="w-full gap-4 grid grid-cols-10">
-			<div class="col-span-full lg:col-span-2 flex justify-center">
+			<div class="col-span-full lg:col-span-2 flex justify-center relative items-center flex-col">
 				<SkinViewer skinUrl={data.player.skin_url.replace('http', 'https')} />
+				<a href={data.player.skin_url.replace('http', 'https')} target="_blank">
+					<div
+						class="right-0 bottom-0 border-stone-50/10 rounded-lg bg-stone-800 border flex items-center justify-center py-1 px-2 gap-2 w-full"
+					>
+						<img src={downloadIcon} alt="download" />
+						<span>Skin</span>
+					</div>
+				</a>
 			</div>
 			<div
 				class="col-span-full lg:col-span-8 bg-stone-800 border border-stone-50/10 rounded-lg w-full"
@@ -66,12 +78,12 @@
 			</div>
 		</div>
 		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3">
-			<LevelProgress player={data.player} />
+			<LevelGraph player={data.player} />
 		</div>
 		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3 flex flex-col gap-4">
 			<h2 class="font-bold m-auto">Andamento partite</h2>
 			<div class="w-full flex flex-col gap-4 items-center">
-				<OverallProgressionGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
+				<OverallProgression bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 		<div class="w-full grid grid-cols-2 gap-4">

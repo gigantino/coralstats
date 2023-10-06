@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
 	import searchIcon from '$lib/assets/search.svg';
-	import AlphaBanner from '$lib/components/AlphaBanner.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import AlphaBanner from '$lib/components/shared/AlphaBanner.svelte';
+	import Footer from '$lib/components/shared/Footer.svelte';
 
 	let username = '';
 	let searchInput: HTMLInputElement | undefined;

@@ -21,7 +21,6 @@ export default function formatDate(inputString: string): string {
 	const day = dateObj.getUTCDate().toString();
 	const monthIndex = dateObj.getUTCMonth();
 	const month = monthShorthands[monthIndex];
-	const year = dateObj.getUTCFullYear().toString();
 
 	// Format the date as "d MMM" (e.g., "3 Ago")
 	const formattedDate = `${day} ${month}`;

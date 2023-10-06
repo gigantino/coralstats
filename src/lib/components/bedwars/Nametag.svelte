@@ -116,8 +116,8 @@
 {#each starColors as char}
 	<span class={`text-minecraft-${char.color}`}>{char.text}</span>
 {/each}
-<span class={`text-minecraft-${rankColor}`}
-	>{player.bedwars_rank && `[${player.bedwars_rank}]`}</span
->
+<span class={`text-minecraft-${rankColor}`}>
+	{player.bedwars_rank && `[${player.bedwars_rank}]`}
+</span>
 <span class="white">{player.display_name}</span>
-<span class={`text-minecraft-gray`}>{player.bedwars_clan && `[${player.bedwars_clan}]`}</span>
+<span class="text-minecraft-gray">{player.bedwars_clan && `[${player.bedwars_clan}]`}</span>

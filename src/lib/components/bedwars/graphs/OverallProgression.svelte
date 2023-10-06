@@ -72,15 +72,29 @@
 						xAxis: {
 							labels: x,
 							ticks: {
-								maxTicksLimit: 7
-							}
-						},
-						x: {
+								display: false
+							},
 							grid: {
+								display: false
+							},
+							border: {
 								display: false
 							}
 						},
+						x: {
+							border: {
+								display: false
+							},
+							grid: {
+								drawOnChartArea: false,
+								display: false
+							},
+							display: false
+						},
 						y: {
+							border: {
+								display: false
+							},
 							grid: {
 								display: false
 							}
