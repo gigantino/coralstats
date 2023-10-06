@@ -1,5 +1,5 @@
 <script>
-	import SkinViewer from '$lib/components/SkinViewer.svelte';
+	import SkinViewer from '$lib/components/shared/SkinViewer.svelte';
 </script>
 
 <div class="flex flex-col items-center justify-center font-minecraft text-xl text-center gap-4">
