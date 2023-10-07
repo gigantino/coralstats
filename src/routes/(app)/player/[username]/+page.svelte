@@ -66,9 +66,7 @@
 					</div>
 				</a>
 			</div>
-			<div
-				class="col-span-full lg:col-span-8 bg-stone-800 border border-stone-50/10 rounded-lg w-full"
-			>
+			<div class="col-span-full lg:col-span-8 wrapper">
 				<div class="w-full overflow-x-auto">
 					<div class="w-full min-w-[500px]">
 						<StatsTable player={data.player} statsHistory={data.bedwarsStatsHistory} />
@@ -79,39 +77,37 @@
 		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3">
 			<LevelPercentage player={data.player} />
 		</div>
-		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3 flex flex-col gap-4">
+		<div class="wrapper">
 			<h2 class="font-bold m-auto">Andamento partite</h2>
 			<div class="w-full flex flex-col gap-4 items-center">
 				<OverallProgression bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 		<div class="w-full grid grid-cols-2 gap-4">
-			<div
-				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
-			>
+			<div class="wrapper col-span-2 md:col-span-1">
 				<h2 class="font-bold m-auto">Stelle</h2>
 				<StarProgression bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
-			<div
-				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
-			>
+			<div class="wrapper col-span-2 md:col-span-1">
 				<h2 class="font-bold m-auto">Partite giocate</h2>
 				<GamesGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 		<div class="w-full grid grid-cols-2 gap-4">
-			<div
-				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
-			>
+			<div class="wrapper col-span-2 md:col-span-1">
 				<h2 class="font-bold m-auto">Winstreak</h2>
 				<WinstreakGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
-			<div
-				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
-			>
+			<div class="wrapper col-span-2 md:col-span-1">
 				<h2 class="font-bold m-auto">Coins</h2>
 				<CoinsGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 	</div>
 {/if}
+
+<style scoped>
+	.wrapper {
+		@apply bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4;
+	}
+</style>

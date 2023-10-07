@@ -71,29 +71,21 @@
 					scales: {
 						xAxis: {
 							labels: x,
-							ticks: {
-								display: false
-							},
 							grid: {
 								display: false
 							},
-							border: {
-								display: false
+							ticks: {
+								maxTicksLimit: 7
 							}
 						},
 						x: {
 							border: {
 								display: false
-							},
-							grid: {
-								drawOnChartArea: false,
-								display: false
-							},
-							display: false
+							}
 						},
 						y: {
-							border: {
-								display: false
+							ticks: {
+								stepSize: 1
 							},
 							grid: {
 								display: false

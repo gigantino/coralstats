@@ -19,6 +19,9 @@
 		username = target.value.replace(/\s/g, '');
 	}
 
+	const randomPlayers = ['8hi', 'AfkaraLP', 'PreAke', 'LilVenox', 'TrueF_'];
+
+	$: randomUsername = randomPlayers[Math.floor(Math.random() * randomPlayers.length)];
 	$: isLoading = $navigating ? true : false;
 </script>
 
@@ -43,7 +46,7 @@
 			<label class="relative">
 				<input
 					on:focus={(e) => e.currentTarget.select()}
-					placeholder="Cerca giocatore"
+					placeholder={`Cerca (e.g. ${randomUsername})`}
 					type="text"
 					bind:this={searchInput}
 					bind:value={username}

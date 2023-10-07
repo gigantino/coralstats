@@ -35,12 +35,15 @@
 					scales: {
 						xAxis: {
 							labels: x,
+							grid: {
+								display: false
+							},
 							ticks: {
 								maxTicksLimit: 7
 							}
 						},
 						x: {
-							grid: {
+							border: {
 								display: false
 							}
 						},

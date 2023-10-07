@@ -34,18 +34,22 @@
 					scales: {
 						xAxis: {
 							labels: x,
+							grid: {
+								display: false
+							},
 							ticks: {
 								maxTicksLimit: 7
 							}
 						},
 						x: {
-							stacked: true,
-							grid: {
+							border: {
 								display: false
 							}
 						},
 						y: {
-							stacked: true,
+							ticks: {
+								stepSize: 1
+							},
 							grid: {
 								display: false
 							}

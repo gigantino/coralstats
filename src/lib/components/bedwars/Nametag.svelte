@@ -36,7 +36,7 @@
 			if (star < 700) return [{ text: convertedStar, color: 'dark-red' }];
 			if (star < 800) return [{ text: convertedStar, color: 'light-purple' }];
 			if (star < 900) return [{ text: convertedStar, color: 'blue' }];
-			return [{ text: String(star), color: 'dark-purple' }];
+			return [{ text: convertedStar, color: 'dark-purple' }];
 		} else {
 			const singleCharacters = convertedStar.split('');
 			const rainbowColor: StarColor[] = [];
