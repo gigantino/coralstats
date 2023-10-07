@@ -33,6 +33,7 @@ export type BedwarsStatsHistory = {
 	beds_broken: number[];
 	winstreak: number[];
 	dates: string[];
+	coins: number[];
 	daily: {
 		levels: number[];
 		kills: number[];
@@ -67,14 +68,14 @@ export type Player = {
 
 type PlayerResponse =
 	| {
-			errored: true;
-			status: number;
-	  }
+		errored: true;
+		status: number;
+	}
 	| {
-			errored: false;
-			player: Player;
-			bedwarsStatsHistory: BedwarsStatsHistory;
-	  };
+		errored: false;
+		player: Player;
+		bedwarsStatsHistory: BedwarsStatsHistory;
+	};
 
 function calculateRatio(k: number, d: number) {
 	if (d === 0) {
@@ -111,6 +112,7 @@ export default async function fetchPlayer(username: string): Promise<PlayerRespo
 		beds_broken: [],
 		winstreak: [],
 		dates: [],
+		coins: [],
 		daily: {
 			levels: [],
 			kills: [],
@@ -143,6 +145,7 @@ export default async function fetchPlayer(username: string): Promise<PlayerRespo
 		bedwarsStatsHistory.beds_broken.push(day.beds_broken);
 		bedwarsStatsHistory.winstreak.push(day.winstreak);
 		bedwarsStatsHistory.dates.push(day.created);
+		bedwarsStatsHistory.coins.push(day.coins);
 		if (i > 0) {
 			const dailyKills = day.kills + day.final_kills - bedwarsStatsHistory.kills[i - 1];
 			const dailyDeaths = day.deaths + day.final_deaths - bedwarsStatsHistory.deaths[i - 1];

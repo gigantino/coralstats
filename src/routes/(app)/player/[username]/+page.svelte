@@ -2,12 +2,13 @@
 	import StatsTable from '$lib/components/bedwars/StatsTable.svelte';
 	import SkinViewer from '$lib/components/shared/SkinViewer.svelte';
 	import type { PageData } from './$types';
-	import StarProgression from '$lib/components/bedwars/StarProgression.svelte';
+	import LevelPercentage from '$lib/components/bedwars/LevelPercentage.svelte';
 	// Graphs
+	import CoinsGraph from '$lib/components/bedwars/graphs/CoinsGraph.svelte';
 	import OverallProgression from '$lib/components/bedwars/graphs/OverallProgression.svelte';
 	import GamesGraph from '$lib/components/bedwars/graphs/GamesGraph.svelte';
 	import WinstreakGraph from '$lib/components/bedwars/graphs/WinstreakGraph.svelte';
-	import LevelGraph from '$lib/components/bedwars/graphs/LevelGraph.svelte';
+	import StarProgression from '$lib/components/bedwars/graphs/StarProgression.svelte';
 
 	import downloadIcon from '$lib/assets/download.svg';
 	import Nametag from '$lib/components/bedwars/Nametag.svelte';
@@ -50,9 +51,7 @@
 	</div>
 {:else}
 	<div class="flex flex-col gap-4">
-		<div
-			class="font-minecraft text-xl bg-stone-800 rounded-lg border w-fit m-auto border-stone-50/10 p-3 text-center"
-		>
+		<div class="font-minecraft text-xl w-fit m-auto p-3 text-center">
 			<Nametag player={data.player} />
 		</div>
 		<div class="w-full gap-4 grid grid-cols-10">
@@ -78,7 +77,7 @@
 			</div>
 		</div>
 		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3">
-			<LevelGraph player={data.player} />
+			<LevelPercentage player={data.player} />
 		</div>
 		<div class="text-xl bg-stone-800 rounded-lg border border-stone-50/10 p-3 flex flex-col gap-4">
 			<h2 class="font-bold m-auto">Andamento partite</h2>
@@ -106,6 +105,12 @@
 			>
 				<h2 class="font-bold m-auto">Winstreak</h2>
 				<WinstreakGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
+			</div>
+			<div
+				class="col-span-2 md:col-span-1 bg-stone-800 border border-stone-50/10 rounded-lg p-3 flex flex-col gap-4"
+			>
+				<h2 class="font-bold m-auto">Coins</h2>
+				<CoinsGraph bedwarsStatsHistory={data.bedwarsStatsHistory} />
 			</div>
 		</div>
 	</div>

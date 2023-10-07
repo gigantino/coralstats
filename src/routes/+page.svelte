@@ -48,7 +48,7 @@
 					bind:this={searchInput}
 					bind:value={username}
 					on:input={handleInput}
-					class="w-full max-w-[400px] border border-stone-50/10 bg-stone-800 rounded-lg h-9 px-8 focus:outline-none focus:ring ring-stone-50/10"
+					class="w-full max-w-sm border border-stone-50/10 bg-stone-800 rounded-lg h-9 px-8 focus:outline-none focus:ring ring-stone-50/10"
 				/>
 				<img src={searchIcon} alt="search" class="absolute top-0 left-2" />
 				<div
