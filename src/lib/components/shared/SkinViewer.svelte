@@ -18,4 +18,4 @@
 	}
 </script>
 
-<canvas bind:this={ctx} />
+<canvas bind:this={ctx} width="140" height="300" />
