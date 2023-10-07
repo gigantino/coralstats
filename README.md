@@ -1,38 +1,29 @@
-# create-svelte
+# CoralStats
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![GitHub](https://img.shields.io/github/license/gigantino/coralstats)
 
-## Creating a project
+[CoralStats](https://coralstats.com) is an unofficial website to track the stats of all [CoralMC](https://coralmc.it)'s players.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Roadmap
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- [ ] KitPvp Stats
+- [ ] Leaderboards
+- [ ] Search autocompletion
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## API
 
-## Developing
+This repository uses https://api.coralstats.com/ under the hood instead of CoralMC's new (alpha) API. That's because, at the current state, CoralMC's API:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- Doesn't return some stats (e.g. beds broken).
+- Doesn't return the actual skins.
+- Could stop working at any point.
+- Doesn't keep track of stats (which is potentially never going to be implemented)
+  https://api.coralstats.com isn't open-source, but it's _very_ permissive and doesn't require a token. One the official API gets more stable, I'm going to make the switch.
 
-```bash
-npm run dev
+## Contributing
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Contributions aren't accepted as of right now. If you want to send feedback or request a feature, you can join the [Discord server](https://discord.gg/afE7trvbYj).
 
-## Building
+## License
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+This project is licensed under the GNU General Public License v3.0 - see [LICENSE](LICENSE) for details.
