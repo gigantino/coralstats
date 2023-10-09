@@ -33,7 +33,7 @@ export default {
 				'mobile-layout': '1024px'
 			},
 			fontFamily: {
-				minecraft: ['Minecraft']
+				minecraft: ['Minecraft', 'sans']
 			},
 			colors: {
 				...minecraftColors

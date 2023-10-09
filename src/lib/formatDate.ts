@@ -14,16 +14,7 @@ export default function formatDate(inputString: string): string {
 		'Dic'
 	];
 
-	// Convert the input string to a Date object
 	const dateObj = new Date(inputString);
-
-	// Get the day, month, and year from the Date object
-	const day = dateObj.getUTCDate().toString();
-	const monthIndex = dateObj.getUTCMonth();
-	const month = monthShorthands[monthIndex];
-
-	// Format the date as "d MMM" (e.g., "3 Ago")
-	const formattedDate = `${day} ${month}`;
-
-	return formattedDate;
+	// {day} {month}
+	return `${dateObj.getUTCDate()} ${monthShorthands[dateObj.getUTCMonth()]}`;
 }

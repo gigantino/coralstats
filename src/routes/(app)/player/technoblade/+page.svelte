@@ -2,6 +2,21 @@
 	import SkinViewer from '$lib/components/shared/SkinViewer.svelte';
 </script>
 
+
+<svelte:head>
+	<title>
+		{"Technoblade • CoralStats"}
+	</title>
+	<meta
+		name="og:title"
+		content="Technoblade • CoralStats"
+	/>
+	<meta
+		name="og:description"
+		content="Technoblade never dies!"
+	/>
+</svelte:head>
+
 <div class="flex flex-col items-center justify-center font-minecraft text-xl text-center gap-4">
 	<p class="text-minecraft-light-purple">Technoblade never dies.</p>
 	<SkinViewer

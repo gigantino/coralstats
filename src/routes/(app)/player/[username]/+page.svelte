@@ -14,26 +14,20 @@
 	import Nametag from '$lib/components/bedwars/Nametag.svelte';
 
 	export let data: PageData;
+
+	$: pageTitle = data.errored
+		? 'Giocatore non trovato • CoralStats'
+		: `${data.player.display_name} • CoralStats`;
+	$: pageDescription = data.errored
+		? 'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.'
+		: `Visualizza le statistiche di ${data.player.display_name} su CoralMC.`;
 </script>
 
 <svelte:head>
-	<title>
-		{data.errored
-			? 'Giocatore non trovato • CoralStats'
-			: `${data.player.display_name} • CoralStats`}
-	</title>
-	<meta
-		name="og:title"
-		content={data.errored
-			? 'Giocatore non trovato • CoralStats'
-			: `${data.player.display_name} • CoralStats`}
-	/>
-	<meta
-		name="og:description"
-		content={data.errored
-			? 'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.'
-			: `Visualizza le statistiche di ${data.player.display_name} su CoralMC.`}
-	/>
+	<title>{pageTitle}</title>
+	<meta name="og:title" content={pageTitle} />
+	<meta name="description" content={pageDescription} />
+	<meta name="og:description" content={pageDescription} />
 </svelte:head>
 
 {#if data.errored}
@@ -61,7 +55,7 @@
 					<div
 						class="right-0 bottom-0 border-stone-50/10 rounded-lg bg-stone-800 border flex items-center justify-center py-1 px-2 gap-2 w-full"
 					>
-						<img src={downloadIcon} alt="download" />
+						<img src={downloadIcon} alt="download" width="20px" height="20px" />
 						<span>Skin</span>
 					</div>
 				</a>

@@ -21,11 +21,10 @@
 		username = target.value.replace(/\s/g, '');
 	}
 
-	const randomPlayers = ['8hi', 'AfkaraLP', 'PreAke', 'LilVenox', 'TrueF_'];
-
 	let hasLoaded = false;
 	let searchPlaceholder = '';
 	onMount(() => {
+		const randomPlayers = ['8hi', 'AfkaraLP', 'PreAke', 'LilVenox', 'TrueF_'];
 		searchPlaceholder = `Cerca (e.g. ${
 			randomPlayers[Math.floor(Math.random() * randomPlayers.length)]
 		})`;
@@ -33,15 +32,15 @@
 	});
 
 	$: isLoading = $navigating ? true : false;
+	const pageDescription =
+		'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.';
 </script>
 
 <svelte:head>
 	<title>CoralStats</title>
 	<meta name="og:title" content="CoralStats" />
-	<meta
-		name="og:description"
-		content={'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.'}
-	/>
+	<meta name="og:description" content={pageDescription} />
+	<meta name="description" content={pageDescription} />
 </svelte:head>
 
 <main class="main-container flex flex-col justify-center">
@@ -52,6 +51,8 @@
 				src="/logo.webp"
 				alt="coralstats logo"
 				class={`rounded-full shadow-lg w-28 ${isLoading && 'animate-spin'}`}
+				height="500px"
+				width="500px"
 			/>
 			<form
 				transition:fade
