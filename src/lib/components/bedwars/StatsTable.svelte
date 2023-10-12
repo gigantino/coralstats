@@ -65,7 +65,7 @@
 </script>
 
 <div class="flex h-full flex-col">
-	<div class="w-full flex justify-end gap-3 bg-stone-900 rounded-t-lg border-stone-50/10 p-3">
+	<div class="w-full flex justify-end gap-3 bg-stone-900 rounded-lg border-stone-50/10 p-3">
 		{#each categories as currentCategory}
 			<button
 				class={`${
