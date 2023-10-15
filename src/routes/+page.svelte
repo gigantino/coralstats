@@ -58,7 +58,7 @@
 					class={`rounded-full shadow-lg w-28 ${isLoading && 'animate-spin'}`}
 					height="112px"
 					width="112px"
-					on:load={() => setInterval(() => (imageLoading = false), 4000)}
+					on:load={() => (imageLoading = false)}
 				/>
 			</div>
 			<form
