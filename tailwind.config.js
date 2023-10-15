@@ -36,7 +36,8 @@ export default {
 				minecraft: ['Minecraft', 'sans']
 			},
 			colors: {
-				...minecraftColors
+				...minecraftColors,
+				'logo-yellow': '#fee75d'
 			}
 		}
 	},

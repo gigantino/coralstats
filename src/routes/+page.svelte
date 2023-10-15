@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
-	import { fade } from 'svelte/transition';
+	import { fade, blur } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import searchIcon from '$lib/assets/search.svg';
 	import AlphaBanner from '$lib/components/shared/AlphaBanner.svelte';
@@ -10,7 +10,7 @@
 	let username = '';
 	let searchInput: HTMLInputElement | undefined;
 	const onKeyDown = (event: KeyboardEvent) => {
-		if ((event.ctrlKey || event.metaKey) && (event.key === 'k' || event.key === 'K')) {
+		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
 			event.preventDefault();
 			searchInput?.focus();
 		}
@@ -22,6 +22,7 @@
 	}
 
 	let hasLoaded = false;
+	let imageLoading = true;
 	let searchPlaceholder = '';
 	onMount(() => {
 		const randomPlayers = ['8hi', 'AfkaraLP', 'PreAke', 'LilVenox', 'TrueF_'];
@@ -47,13 +48,19 @@
 	<AlphaBanner />
 	<div class="w-full flex items-center h-full justify-center flex-col gap-4 px-4">
 		{#if hasLoaded}
-			<img
-				src="/logo.webp"
-				alt="coralstats logo"
-				class={`rounded-full shadow-lg w-28 ${isLoading && 'animate-spin'}`}
-				height="500px"
-				width="500px"
-			/>
+			<div class="w-28 h-28 rounded-full bg-orange-300 relative">
+				{#if imageLoading}
+					<div transition:blur class="absolute w-full h-full rounded-full bg-logo-yellow" />
+				{/if}
+				<img
+					src="/logo.webp"
+					alt="coralstats logo"
+					class={`rounded-full shadow-lg w-28 ${isLoading && 'animate-spin'}`}
+					height="112px"
+					width="112px"
+					on:load={() => setInterval(() => (imageLoading = false), 4000)}
+				/>
+			</div>
 			<form
 				transition:fade
 				action={`/player/${username.toLowerCase()}`}
