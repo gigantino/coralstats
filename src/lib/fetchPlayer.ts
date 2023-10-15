@@ -1,4 +1,5 @@
 export type BedwarsStats = {
+	beds_broken: number;
 	coins: number;
 	collectionId: string;
 	collectionName: string;
@@ -29,6 +30,7 @@ export type BedwarsStatsHistory = {
 	wins: number[];
 	losses: number[];
 	wlr: number[];
+	beds_broken: number[];
 	winstreak: number[];
 	dates: string[];
 	coins: number[];
@@ -43,6 +45,7 @@ export type BedwarsStatsHistory = {
 		wins: number[];
 		losses: number[];
 		wlr: number[];
+		beds_broken: number[];
 	};
 };
 
@@ -65,14 +68,14 @@ export type Player = {
 
 type PlayerResponse =
 	| {
-		errored: true;
-		status: number;
-	}
+			errored: true;
+			status: number;
+	  }
 	| {
-		errored: false;
-		player: Player;
-		bedwarsStatsHistory: BedwarsStatsHistory;
-	};
+			errored: false;
+			player: Player;
+			bedwarsStatsHistory: BedwarsStatsHistory;
+	  };
 
 export default async function fetchPlayer(username: string): Promise<PlayerResponse> {
 	const playerRequest = await fetch(`https://api.coralstats.com/h/player/${username}`);

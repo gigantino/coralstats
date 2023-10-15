@@ -34,6 +34,7 @@
 			| 'wins'
 			| 'losses'
 			| 'wlr'
+			| 'beds_broken'
 			| 'levels'
 	) {
 		return category === 'totali'
@@ -59,6 +60,7 @@
 	$: wins = getDisplayedValue(selectedCategory, statsHistory, 'wins');
 	$: losses = getDisplayedValue(selectedCategory, statsHistory, 'losses');
 	$: wlr = calculateRatio(wins, losses);
+	$: bedsBroken = getDisplayedValue(selectedCategory, statsHistory, 'beds_broken');
 	$: levels = getDisplayedValue(selectedCategory, statsHistory, 'levels');
 </script>
 
@@ -112,6 +114,10 @@
 		<div class="flex flex-col border rounded-lg p-2 border-stone-50/10 text-center">
 			<span class="font-bold">W/L</span>
 			<span>{wlr}</span>
+		</div>
+		<div class="flex flex-col border rounded-lg p-2 border-stone-50/10 text-center">
+			<span class="font-bold">Letti distrutti</span>
+			<span>{bedsBroken}</span>
 		</div>
 		<div class="flex flex-col border rounded-lg p-2 border-stone-50/10 text-center">
 			<span class="font-bold">Winstreak</span>
