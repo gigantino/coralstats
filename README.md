@@ -8,7 +8,7 @@
 
 - [ ] KitPvp Stats
 - [ ] Leaderboards
-- [ ] Search autocompletion
+- [x] Search autocompletion (Algolia)
 
 ## API
 
