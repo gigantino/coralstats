@@ -2,6 +2,8 @@
 	import Chart from 'chart.js/auto';
 	import type { BedwarsStatsHistory } from '$lib/fetchPlayer';
 	import formatDate from '$lib/formatDate';
+	import EmptyGraph from '$lib/components/shared/EmptyGraph.svelte';
+	import arrayHasChanged from "$lib/arrayHasChanged"
 
 	let ctx: HTMLCanvasElement | undefined;
 	let chartObject: Chart | undefined;
@@ -10,6 +12,7 @@
 
 	$: x = bedwarsStatsHistory.dates.map((v) => formatDate(v));
 	$: stars = bedwarsStatsHistory.levels;
+	$: graphIsEmpty = !arrayHasChanged(stars)
 
 	$: {
 		if (ctx) {
@@ -69,5 +72,9 @@
 </script>
 
 <div class="w-full h-72">
-	<canvas class="chart" bind:this={ctx} />
+	{#if graphIsEmpty}
+		<EmptyGraph />
+	{:else}
+		<canvas class="chart" bind:this={ctx} />
+	{/if}
 </div>
