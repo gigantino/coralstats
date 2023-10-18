@@ -2,6 +2,7 @@
 	import Chart from 'chart.js/auto';
 	import type { BedwarsStatsHistory } from '$lib/fetchPlayer';
 	import formatDate from '$lib/formatDate';
+	import EmptyGraph from '$lib/components/shared/EmptyGraph.svelte';
 
 	let ctx: HTMLCanvasElement | undefined;
 	let chartObject: Chart | undefined;
@@ -11,6 +12,7 @@
 	$: x = bedwarsStatsHistory.dates.map((v) => formatDate(v));
 	$: wins = bedwarsStatsHistory.daily.wins;
 	$: losses = bedwarsStatsHistory.daily.losses;
+	$: graphIsEmpty = [...wins, ...losses].reduce((sum, num) => sum + num, 0) == 0;
 
 	$: {
 		if (ctx) {
@@ -76,5 +78,9 @@
 </script>
 
 <div class="w-full h-72">
-	<canvas class="chart" bind:this={ctx} />
+	{#if graphIsEmpty}
+		<EmptyGraph />
+	{:else}
+		<canvas class="chart" bind:this={ctx} />
+	{/if}
 </div>

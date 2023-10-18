@@ -22,7 +22,7 @@
 				data: {
 					datasets: [
 						{
-							label: 'Stelle',
+							label: 'Coins',
 							backgroundColor: '#FEE75C',
 							borderColor: '#FEE75C',
 							data: coins

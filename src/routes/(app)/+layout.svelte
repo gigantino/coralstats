@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
 	import searchIcon from '$lib/assets/search.svg';
+	import AlgoliaSearch from '$lib/components/shared/AlgoliaSearch.svelte';
 	import AlphaBanner from '$lib/components/shared/AlphaBanner.svelte';
 	import Footer from '$lib/components/shared/Footer.svelte';
 
@@ -34,25 +35,7 @@
 					} w-10 h-10 rounded-full drop-shadow-sm flex-shrink-0`}
 				/>
 			</a>
-			<form action={`/player/${username.toLowerCase()}`} autocomplete="off" class="w-full md:w-fit">
-				<label class="relative">
-					<input
-						on:focus={(e) => e.currentTarget.select()}
-						placeholder="Cerca giocatore"
-						type="text"
-						bind:this={searchInput}
-						bind:value={username}
-						on:input={handleInput}
-						class="w-full border border-stone-50/10 bg-stone-800 rounded-lg h-9 px-8 focus:outline-none focus:ring ring-stone-50/10"
-					/>
-					<img src={searchIcon} alt="search" class="absolute top-0 left-2" />
-					<div
-						class="top-0 right-2 border-stone-50/10 border rounded-lg bg-stone-900 w-fit text-sm px-1 absolute"
-					>
-						Ctrl K
-					</div>
-				</label>
-			</form>
+			<AlgoliaSearch />
 		</div>
 	</nav>
 
