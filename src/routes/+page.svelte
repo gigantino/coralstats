@@ -4,10 +4,18 @@
 	import AlgoliaSearch from '$lib/components/shared/AlgoliaSearch.svelte';
 	import AlphaBanner from '$lib/components/shared/AlphaBanner.svelte';
 	import Footer from '$lib/components/shared/Footer.svelte';
+	import { onMount } from 'svelte';
 	import '../app.css';
 
 	$: isLoading = $navigating ? true : false;
-	let imageIsLoading = true;
+	let imageLoaded = false;
+
+	onMount(async () => {
+		const img = new Image();
+		img.src = '/logo.webp';
+		await img.decode();
+		imageLoaded = true;
+	});
 
 	const pageDescription =
 		'CoralStats ti permette di visualizzare le statistiche dei giocatori di CoralMC.';
@@ -24,7 +32,7 @@
 	<AlphaBanner />
 	<div class="w-full flex items-center h-full justify-center flex-col gap-4 px-4">
 		<div class="w-28 h-28 rounded-full bg-orange-300 relative">
-			{#if !imageIsLoading}
+			{#if !imageLoaded}
 				<div transition:blur class="absolute w-full h-full rounded-full bg-logo-yellow" />
 			{/if}
 			<img
@@ -34,7 +42,6 @@
 				height="112px"
 				width="112px"
 				loading="eager"
-				on:load={() => (imageIsLoading = true)}
 			/>
 		</div>
 		<AlgoliaSearch />
