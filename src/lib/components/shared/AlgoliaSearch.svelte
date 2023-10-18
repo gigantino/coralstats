@@ -90,7 +90,7 @@
 		<img src={searchIcon} alt="search" class="absolute top-2 left-2" />
 		{#if username && username !== '' && searchResults.length > 0 && inputIsFocused}
 			<div
-				class="w-full flex flex-col mt-2 border absolute border-stone-50/10 bg-stone-800 rounded-lg overflow-hidden"
+				class="w-full flex flex-col mt-2 border absolute border-stone-50/10 bg-stone-800 rounded-lg overflow-hidden z-50"
 			>
 				<div class="flex flex-col">
 					{#each searchResults as result}
