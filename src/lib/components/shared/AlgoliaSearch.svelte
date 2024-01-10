@@ -75,7 +75,7 @@
 		<input
 			on:focus={(e) => e.currentTarget.select()}
 			type="text"
-			placeholder="Cerca (e.g. 8hi)"
+			placeholder="Cerca (e.g. AfkaraLP)"
 			bind:this={searchInput}
 			bind:value={username}
 			on:focusin={() => (inputIsFocused = true)}
