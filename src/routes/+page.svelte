@@ -26,6 +26,7 @@
 	<meta name="og:title" content="CoralStats" />
 	<meta name="og:description" content={pageDescription} />
 	<meta name="description" content={pageDescription} />
+	<meta name="google-adsense-account" content="ca-pub-6957384740059378">
 </svelte:head>
 
 <main class="main-container flex flex-col justify-center">
